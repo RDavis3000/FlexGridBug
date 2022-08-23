@@ -1,17 +1,27 @@
-﻿@{
+﻿@using C1.Web.Mvc.Grid
+@{
     ViewData["Title"] = "Home Page";
 }
+
+<style type="text/css">
+        .grid {
+            height: 500px;
+            border: 2px solid #e0e0e0;
+            font-family:Cambria;
+            font-weight:bold;
+        }
+</style>
 
 <div>
 <c1-flex-grid auto-generate-columns="false" width="800px" class="grid"
     is-read-only="true" allow-add-new="true" allow-sorting="true"              
-    sticky-headers="true" selection-mode="CellRange" sorting-type="SingleColumn">
-    <c1-flex-grid-column binding="ID"></c1-flex-grid-column>
+    sticky-headers="true" selection-mode="CellRange" sorting-type="SingleColumn" id="grid">
+    <c1-flex-grid-column binding="Id"></c1-flex-grid-column>
     <c1-flex-grid-column binding="Country"></c1-flex-grid-column>
     <c1-flex-grid-column binding="Value"></c1-flex-grid-column>
  <c1-items-source read-action-url='@Url.Action("GetRecords")' page-size="5" ></c1-items-source>
         <c1-flex-grid-filter default-filter-type="Both" id="filter" exclusive-value-search="false" ></c1-flex-grid-filter>
 
     </c1-flex-grid>
-    <c1-pager owner="ff" is-disabled="false" style="width:600px"></c1-pager>
+    <c1-pager owner="grid" is-disabled="false" style="width:600px"></c1-pager>
 </div>

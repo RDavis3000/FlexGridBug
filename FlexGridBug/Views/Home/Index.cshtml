@@ -2,7 +2,16 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div>
+<c1-flex-grid auto-generate-columns="false" width="800px" class="grid"
+    is-read-only="true" allow-add-new="true" allow-sorting="true"              
+    sticky-headers="true" selection-mode="CellRange" sorting-type="SingleColumn">
+    <c1-flex-grid-column binding="ID"></c1-flex-grid-column>
+    <c1-flex-grid-column binding="Country"></c1-flex-grid-column>
+    <c1-flex-grid-column binding="Value"></c1-flex-grid-column>
+ <c1-items-source read-action-url='@Url.Action("GetRecords")' page-size="5" ></c1-items-source>
+        <c1-flex-grid-filter default-filter-type="Both" id="filter" exclusive-value-search="false" ></c1-flex-grid-filter>
+
+    </c1-flex-grid>
+    <c1-pager owner="ff" is-disabled="false" style="width:600px"></c1-pager>
 </div>
